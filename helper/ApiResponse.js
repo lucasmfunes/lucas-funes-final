@@ -4,7 +4,7 @@ module.exports = class ApiResponse {
     }
   
     static sendErrorResponse(res, statusCode, message) {
-        res.status(statusCode).json({ error: message });
+        res.status(statusCode).json({ errorMsg: message });
     }
-  }
+}
   

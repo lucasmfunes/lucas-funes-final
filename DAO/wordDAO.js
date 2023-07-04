@@ -1,15 +1,15 @@
-const ErrorClasses = require('../errors');
+const ErrorClasses = require('../errors/error.js');
 
 module.exports = class WordDAO {
     
     constructor() {
-        const wordList = []
+        this.wordList = []
     }
 
     crear(word) {
         try{
-            console.log("entre 2")
-            this.wordList.push(word)
+            this.wordList.push(word.toLowerCase())
+            return word;
         } catch (e) {
             throw new ErrorClasses.Error500();
         }
@@ -17,7 +17,7 @@ module.exports = class WordDAO {
 
     listar() {
         try{
-            return wordList;
+            return this.wordList;
         } catch (e) {
             throw e;
         }
@@ -25,8 +25,12 @@ module.exports = class WordDAO {
 
     borrar(wordToDelete) {
         try{
-            wordList = wordList.filter(word => word != wordToDelete);
-            return wordList;
+            if(this.wordList.includes(wordToDelete.toLowerCase())){
+                this.wordList = this.wordList.filter(word => word.toLowerCase() != wordToDelete.toLowerCase());
+                return this.wordList;
+            }else{
+                throw new ErrorClasses.Error404();
+            }
         } catch (e) {
             throw e;
         }

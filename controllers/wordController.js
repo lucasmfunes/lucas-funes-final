@@ -3,11 +3,10 @@ const ApiResponse = require('../helper/ApiResponse');
 
 function crearPalabraController(req, res){
     try {
-        console.log("entre")
         const body = req.body
         const repo = WordRepository.getInstance();
-        repo.crearPalabra(body.word);
-        return ApiResponse.sendSuccessResponse(res, 200, "Palabra creada")
+        const result = repo.crearPalabra(body.word);
+        return ApiResponse.sendSuccessResponse(res, 200, "Palabra creada: " + result)
     } catch(e){
         console.log(e)
         return ApiResponse.sendErrorResponse(res, e.statusCode, e.message)
@@ -18,10 +17,22 @@ function crearPalabraController(req, res){
 function listarPalabrasController(req, res){
     try {
         const repo = WordRepository.getInstance();
-        const wordList = repo.listarPalabras();
-        return ApiResponse.sendSuccessResponse(res, 200, wordList)
+        const phrase = repo.listarPalabras();
+        return ApiResponse.sendSuccessResponse(res, 200, phrase)
     } catch(e){
         return ApiResponse.sendErrorResponse(res, e.statusCode, e.message)
     }
 }
-module.exports = { crearPalabraController, listarPalabrasController }
+
+function borrarPalabraController(req, res){
+    try {
+        let word = req.query.word;
+        const repo = WordRepository.getInstance();
+        repo.borrarPalabra(word);
+        console.log("Hola")
+        return ApiResponse.sendSuccessResponse(res, 200, "Palabra borrada correctamente")
+    } catch(e){
+        return ApiResponse.sendErrorResponse(res, e.statusCode, e.message)
+    }
+}
+module.exports = { crearPalabraController, listarPalabrasController, borrarPalabraController }

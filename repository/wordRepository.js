@@ -16,8 +16,7 @@ module.exports = class WordRepository {
 
     crearPalabra(word){
         try {
-            console.log(word)
-            this.db.crear(word);
+            return this.db.crear(word);
         } catch(e){
             console.log(e)
             throw e
@@ -26,9 +25,26 @@ module.exports = class WordRepository {
 
     listarPalabras(){
         try {
-           return this.db.listar();
+           return this.db.listar().toString().replaceAll(',', ' ');
         } catch(e){
             throw e
         }
+    }
+
+    borrarPalabra(word){
+        try {
+           return this.db.borrar(word);
+        } catch(e){
+            throw e
+        }
+    }
+
+    obtenerInfo(){
+        try {
+            let list = this.db.listar();
+
+         } catch(e){
+             throw e
+         }
     }
 }
