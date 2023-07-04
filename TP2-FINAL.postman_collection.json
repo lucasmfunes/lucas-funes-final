@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "e4fd9c72-0218-403f-9fe0-c8b0a5cc9f7e",
+		"name": "TP2-FINAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17753324"
+	},
+	"item": [
+		{
+			"name": "Crear palabra",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"word\": \"Hola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/word",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"word"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener frase",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/word",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"word"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar palabra",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/word?word=hola",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"word"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "hola"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cantidad palabras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/word/info",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"word",
+						"info"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

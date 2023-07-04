@@ -11,7 +11,7 @@ module.exports = class WordDAO {
             this.wordList.push(word.toLowerCase())
             return word;
         } catch (e) {
-            throw new ErrorClasses.Error500();
+            throw e;
         }
     }
 

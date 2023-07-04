@@ -1,5 +1,5 @@
 const express = require('express')
-const { crearPalabraController, listarPalabrasController, borrarPalabraController } = require('./controllers/wordController.js')
+const { crearPalabraController, listarPalabrasController, borrarPalabraController, obtenerPalabrasInfoController } = require('./controllers/wordController.js')
 const { validateWordToCreate, validateWordToDelete } = require('./validations/wordValidation.js')
 
 const app = express()
@@ -17,4 +17,4 @@ app.get('/word', listarPalabrasController)
 
 app.delete('/word', validateWordToDelete, borrarPalabraController)
 
-app.get('/word/info', borrarPalabraController)
+app.get('/word/info', obtenerPalabrasInfoController)

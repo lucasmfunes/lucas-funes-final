@@ -42,7 +42,9 @@ module.exports = class WordRepository {
     obtenerInfo(){
         try {
             let list = this.db.listar();
-
+            let conteo = {};
+            list.forEach(function (word) { conteo[word] = (conteo[word] || 0) + 1; });
+            return conteo;
          } catch(e){
              throw e
          }

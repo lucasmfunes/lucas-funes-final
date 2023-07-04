@@ -35,4 +35,15 @@ function borrarPalabraController(req, res){
         return ApiResponse.sendErrorResponse(res, e.statusCode, e.message)
     }
 }
-module.exports = { crearPalabraController, listarPalabrasController, borrarPalabraController }
+
+
+function obtenerPalabrasInfoController(req, res){
+    try {
+        const repo = WordRepository.getInstance();
+        const conteo = repo.obtenerInfo();
+        return ApiResponse.sendSuccessResponse(res, 200, conteo)
+    } catch(e){
+        return ApiResponse.sendErrorResponse(res, e.statusCode, e.message)
+    }
+}
+module.exports = { crearPalabraController, listarPalabrasController, borrarPalabraController, obtenerPalabrasInfoController}
